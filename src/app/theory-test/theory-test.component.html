@@ -1,0 +1,19 @@
+<div class="main-wrapper d-flex flex-wrap" *ngIf="theoryTests; else noTheoryTests ">
+  <a [@fadeInOut]  *ngFor="let theoryTest of theoryTests" [routerLink]="['/theory-tests', theoryTest.id]"  href="#" class="theory-test-container d-flex flex-wrap justify-content-center col-12 col-sm-6 p-0" >
+    <div class="theory-test-card p-4 bd-highlight col-12 p-0
+     text-center background-grey-hover flex-grow-1">
+      <div class="title title-color p-2 title-font-size">
+        {{theoryTest.title}}
+      </div>
+      <div class="num-of-quest content-color p-2">
+        {{theoryTest.num_of_questions}}
+      </div>
+    </div>
+  </a>
+  </div>
+
+  <ng-template #noTheoryTests>
+    <div class="main-wrapper">
+      There is no theory tests for now.
+    </div>
+</ng-template>

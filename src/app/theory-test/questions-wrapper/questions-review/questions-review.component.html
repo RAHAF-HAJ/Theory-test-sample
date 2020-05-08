@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header" [id]="getQuestCardHeadId()">
+    <h5 class="mb-0">
+      <button class="btn btn-link background-black-grey title-color" data-toggle="collapse" [attr.data-target]="getQuestIdAsHash()" aria-expanded="false" [attr.aria-controls]="getQuestId()">
+        <div  class=" question text-center headers-color background-black-grey p-3" *ngIf="quest">
+          <div class="text" *ngIf="quest.text">
+            {{quest.text}}
+          </div>
+          <div class="translated-text title-color" *ngIf="quest.translated_text">
+            {{quest.translated_text}}
+          </div>
+          <div class="img p-2" *ngIf="quest.img">
+            <img src="{{quest.img}}" alt="question">
+          </div>
+        </div>
+      </button>
+    </h5>
+  </div>
+  <div [id]="getQuestId()" class="collapse"  [attr.aria-labelledby]="getQuestCardHeadId()" data-parent="#accordion">
+    <div class="card-body">
+      <div  class=" question text-center headers-color" *ngIf="quest">
+      <div class="answers" *ngIf="quest.answers">
+        <div *ngFor="let answer of quest.answers; let i = index">
+        <button class="answer p-2 mb-2" disabled="disabled"
+        [ngClass]="{'bg-success': ((i + 1) === quest.correct_answer),
+                    'bg-danger': (i === quest.user_answer) && ((i + 1) !== quest.correct_answer)
+                    }"
+        >
+          <div class="text" *ngIf="answer.text">
+            {{answer.text}}
+          </div>
+          <div class="translated-text " *ngIf="answer.translated_text">
+            {{answer.translated_text}}
+          </div>
+          <div class="img p-2" *ngIf="answer.img">
+            <img src="{{answer.img}}" alt="">
+          </div>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

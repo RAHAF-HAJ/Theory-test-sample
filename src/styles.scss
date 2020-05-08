@@ -1,1 +1,142 @@
 /* You can add global styles to this file, and also import other style files */
+$main-color: #cbab2d;
+$light-grey-color : #ececec;
+$black-grey-color: #646667;
+$headers-color: #fff;
+$content-color: #212529;
+$header-font-size: 18px;
+$title-font-size: 16px;
+$big-lg-vw : 2vw;
+$big-md-vw : 5vw;
+$mid-lg-vw: 1.5vw;
+$mid-md-vw: 3.5vw;
+$img-lg-size : 10vw;
+$img-md-size: 20vw;
+
+// general
+@font-face {
+  font-family: 'Hekaya';
+  src: url(assets/fonts/aljazeera.ttf) format("opentype");
+}/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Aljazeera';
+    src: url('assets/fonts/Aljazeera.woff2') format('woff2'),
+        url('assets/fonts/aljazeera.ttf') format('ttf'),
+        url('assets/fonts/Aljazeera.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+  background-color: #ececec;
+  font-family: 'aljazeera';
+}
+a, a:hover {
+    text-decoration: none
+}
+
+.card-header button {
+    position: relative;
+}
+
+.card-header button[aria-expanded="false"]:after {
+    transition: all 0.5s ease-in-out;
+    content: '+';
+    color: #fff;
+    position: absolute;
+    right: 15%;
+    top: 40%;
+    font-size: 50px;
+}
+
+.card-header button[aria-expanded="true"]:after{
+    transition: all 0.5s ease-in-out;
+    content: '-';
+    color: #fff;
+    position: absolute;
+    right: 15%;
+    top: 40%;
+    font-size: 50px;
+}
+
+
+.background-main-color {
+  background-color: $main-color;
+}
+
+.background-grey {
+  background-color: $light-grey-color;
+}
+
+.background-grey-hover:hover {
+  background-color: $black-grey-color !important;
+  box-shadow: 0px 0px 5px $main-color !important
+}
+
+.background-black-grey {
+  background: $black-grey-color;
+}
+
+.headers-color {
+  color: $headers-color;
+}
+
+.title-color {
+  color: $main-color;
+}
+
+.content-color {
+  color: $content-color;
+}
+
+.headers-font-size {
+  font-size: $big-lg-vw;
+}
+
+.title-font-size {
+    font-size: $mid-lg-vw;
+}
+
+.padding-big-screen {
+  padding: $big-lg-vw;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
+img {
+  width: $img-lg-size
+}
+//Special shared
+button.answer {
+    display: block;
+    background: #fff;
+    width: 100%;
+    outline:none;
+    border: none;
+    box-shadow: 0px 0px 5px #cbab2d4d;
+}
+button.answer.bg-success,
+button.answer.bg-danger {
+  color: #fff;
+}
+// Media query
+@media screen and (max-width: 768px) {
+  .headers-font-size {
+    font-size: $big-md-vw;
+  }
+
+  .padding-big-screen {
+    padding: $big-md-vw;
+  }
+
+  .title-font-size {
+      font-size: $mid-md-vw;
+  }
+
+  img {
+    width: $img-md-size
+  }
+}

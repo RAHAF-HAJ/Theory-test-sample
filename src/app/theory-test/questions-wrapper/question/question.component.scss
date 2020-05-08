@@ -1,0 +1,10 @@
+.answer-changed {
+  color: #fff;
+  animation: blink 2s linear 1;
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+}

@@ -1,0 +1,36 @@
+<div [@inOutAnimation]>
+  <div  class="question text-center headers-color background-black-grey p-4 mb-4" *ngIf="quest">
+    <div class="text" *ngIf="quest.text">
+      {{quest.text}}
+    </div>
+    <div class="translated-text title-color" *ngIf="quest.translated_text">
+      {{quest.translated_text}}
+    </div>
+    <div class="img p-2" *ngIf="quest.img">
+      <img src="{{quest.img}}" alt="question">
+    </div>
+  </div>
+  <div class="answers" *ngIf="quest.answers">
+    <div *ngFor="let answer of quest.answers; let i = index">
+    <button class="answer p-2 mb-2"
+      (click)="onSelectAnswer(i, $event)"
+      [ngClass]="{'bg-success': ((i + 1) === quest.correct_answer) && (selected_answer > -1),
+                  'bg-danger': (i === selected_answer) && ((i + 1) !== quest.correct_answer),
+                  'answer-changed': ((i + 1) === quest.correct_answer && selected_answer > -1)
+                                || (i === selected_answer && (i + 1) !== quest.correct_answer)
+                  }"
+      [disabled]="selected_answer > -1"
+    >
+      <div class="text" *ngIf="answer.text">
+        {{answer.text}}
+      </div>
+      <div class="translated-text" *ngIf="answer.translated_text">
+        {{answer.translated_text}}
+      </div>
+      <div class="img p-2" *ngIf="answer.img">
+        <img src="{{answer.img}}" alt="">
+      </div>
+    </button>
+    </div>
+  </div>
+</div>

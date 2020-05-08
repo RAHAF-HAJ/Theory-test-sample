@@ -1,0 +1,29 @@
+<div *ngIf=" activated_question + 1 <= questions.length">
+  <div class="question-counter headers-color headers-font-size padding-big-screen
+  text-center bold-font">
+    {{activated_question + 1}} / {{questions.length}}
+  </div>
+  <div class="question-sizer" [ngStyle]="{'width': getQuestionSizerWidth() +'%' }"></div>
+</div>
+<div class="main-wrapper background-grey">
+  <div class="main-question-wrapper title-font-size" *ngIf="questions">
+    <div  *ngFor="let question of questions; let i = index">
+      <app-question [question]="question"
+       (answerSelected)="changeActiveQuestion(i, $event)"
+       *ngIf="i === activated_question"
+       ></app-question>
+    </div>
+  </div>
+</div>
+
+<div [@fadeInOut] class="main-wrapper" *ngIf="questions !== undefined && activated_question + 1 > questions.length">
+  <div class="question-score headers-color headers-font-size padding-big-screen
+  text-center bold-font">
+    النتيحة النهائية: {{user_score}} / {{questions.length}}
+  </div>
+  <div class="main-question-wrapper title-font-size accordion" *ngIf="questions"  id="accordion">
+      <app-questions-review  *ngFor="let question of questions; let i = index" [question]="question"
+        [questionIndex]="i"
+       ></app-questions-review>
+  </div>
+</div>
